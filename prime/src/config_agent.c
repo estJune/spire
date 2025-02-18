@@ -371,10 +371,10 @@ void Handle_Config_Msg(int s, int source, void * dummy_p){
 		}
 	    //free old keys and to save new keys when we get them
 	    if(total_key_frags>0){
-		    for (i=0;i<10;i++){
-			    if(key_messages[i]!=NULL)
-				    free(key_messages[i]);
-			    key_messages[i]=NULL;
+	        for (i=0;i<10;i++){
+                if(key_messages[i]!=NULL)
+                    free(key_messages[i]);
+                key_messages[i]=NULL;
 		    }
 	    }
             //store config message for SM and repeat
