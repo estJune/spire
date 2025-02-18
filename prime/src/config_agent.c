@@ -98,7 +98,7 @@ void Handle_Config_Msg(int s, int source, void * dummy_p);
 
 
 
-void full_decrypt(int decrypt_id,int32u key_parts,int32u key_part_size,int32u unenc_size,char *enc_key, char *dec_key){
+void full_decrypt(int decrypt_id, int32u key_parts, int32u key_part_size, int32u unenc_size, char *enc_key, char *dec_key){
     char dec_filename[250];
     char pvtkeyfilename[250];
     char *dec_chunk;
@@ -363,22 +363,22 @@ void Handle_Config_Msg(int s, int source, void * dummy_p){
     	    memset(needed_keys_ids,0,sizeof(needed_keys_ids));
             
 	    for (id=1;id<=MAX_NUM_SERVER_SLOTS;id++){
-		if(sm_node_ids[id]==1){
-		     if(c_mess->tpm_based_id[id-1]!=0){
-			needed_keys_ids[c_mess->tpm_based_id[id-1]]=1;	
-			}	
+		    if(sm_node_ids[id]==1){
+		        if(c_mess->tpm_based_id[id-1]!=0){
+			        needed_keys_ids[c_mess->tpm_based_id[id-1]]=1;	
+			    }	
 		    }
 		}
 	    //free old keys and to save new keys when we get them
 	    if(total_key_frags>0){
-		for (i=0;i<10;i++){
-			if(key_messages[i]!=NULL)
-				free(key_messages[i]);
-			key_messages[i]=NULL;
-		}
+		    for (i=0;i<10;i++){
+			    if(key_messages[i]!=NULL)
+				    free(key_messages[i]);
+			    key_messages[i]=NULL;
+		    }
 	    }
             //store config message for SM and repeat
-	    total_key_frags= c_mess->frag_num;
+	    total_key_frags = c_mess->frag_num;
             recvd_key_frags_count = 0;
             memset(recvd_key_frags,0,sizeof(recvd_key_frags));
             memcpy(curr_config_msg, mess, ret);
@@ -447,8 +447,8 @@ void Handle_Config_Msg(int s, int source, void * dummy_p){
                         curr_idx+= pvt_header->pvt_key_parts*pvt_header->pvt_key_part_size;
                         continue;
                     }else{
-		    	dec_key_id=pvt_header->id;
-			Alarm(DEBUG, "Decrypt pvt key =%d\n",pvt_header->id);
+		    	        dec_key_id=pvt_header->id;
+			            Alarm(DEBUG, "Decrypt pvt key =%d\n",pvt_header->id);
 			}
                 }
                 curr_idx+=sizeof(pvt_key_header);
